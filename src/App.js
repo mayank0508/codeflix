@@ -1,6 +1,8 @@
 import React from 'react';
 
-function App() {
+// const Star = () => React.createElement('div', null, 'This is a little star'); // this is a alternate to JSX
+
+const App = () => {
   return (
     <div className="App">
       Start here.
@@ -9,3 +11,4 @@ function App() {
 }
 
 export default App;
+ 
