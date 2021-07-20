@@ -5,10 +5,10 @@ import { Wrapper, Content, LogoImg, TMDBLogoImg} from './Header.styles';
 
 
 const Header = () => (
-<Wrapper>
-  <Content>
-    <LogoImg src={RMDBLogo} alt="rmdb-logo"/>
-    <TMDBLogoImg src={TMDBLogo} alt="tmdb_logo" />
+<Wrapper>  {/* here the work of the wrapper is to just create a card */}
+  <Content> {/* here the work of the content is to make a place where we can add logos */}
+    <LogoImg src={RMDBLogo} alt="rmdb-logo"/>  {/* here we actually we declare the main logo */}
+    <TMDBLogoImg src={TMDBLogo} alt="tmdb_logo" />  {/* here we actually we declare the tmdb logo */}
     </Content>
 </Wrapper>
 );
