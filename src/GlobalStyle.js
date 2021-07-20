@@ -3,7 +3,7 @@ import { createGlobalStyle } from 'styled-components'; // this is the only impor
 export const GlobalStyle = createGlobalStyle`
 :root {                               //  these are the css variables that will be used in the rest of the app
     --maxWidth: 1280px;
-    --white: #ffffff;                // white background
+    --white: #fff;                // white background
     --ligthGrey: #eee;               // black background
     --medGrey: #353535;              // dark grey background
     --darkGrey: #1c1c1c;
