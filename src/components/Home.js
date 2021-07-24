@@ -22,9 +22,8 @@ const Home = () => {
     // 2 arguments called page and seachTerm, that
     // gives those arguments
     try {
-      setError(false);
-      setLoading(true);
-
+      setError(false); // since it wont have any error rightnow
+      setLoading(true); // since it will be loading rightnow
       const movies = await apiSettings.fetchMovies(searchTerm, page);
       // here we have used the await method to fetch the movies from the API
 
