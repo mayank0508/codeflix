@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 // API
-import apiSettings from './../API';
+import API from './../API';
 
 const initialState = {
   // this is the initial state of the api key !!
@@ -11,7 +11,7 @@ const initialState = {
 };
 
 export const useHomeFetch = () => {
-  const [state, setState] = useState();
+  const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
@@ -24,7 +24,7 @@ export const useHomeFetch = () => {
     try {
       setError(false); // since it wont have any error rightnow
       setLoading(true); // since it will be loading rightnow
-      const movies = await apiSettings.fetchMovies(searchTerm, page);
+      const movies = await API.fetchMovies(searchTerm, page);
       // here we have used the await method to fetch the movies from the API
 
       setState(prev => ({
@@ -45,7 +45,7 @@ export const useHomeFetch = () => {
 
   //Intitial Render
   useEffect(() => {
-    fetchMovies(1);
+    fetchMovies(1);  // here 1 means 1st page
   }, []); // here the [] is empty that means that the function will only render once
 
   return { state, loading, error };
