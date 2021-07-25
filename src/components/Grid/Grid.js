@@ -1,5 +1,5 @@
 import React from 'react';
-import { Wrapper, Content } from '../HeroImage/HeroImage.styles';
+import { Wrapper, Content } from './Grid.styles';
 
 
 const Grid = ({ header, children }) => (
@@ -12,3 +12,4 @@ const Grid = ({ header, children }) => (
 )
 
 export default Grid;
+
