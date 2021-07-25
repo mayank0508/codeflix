@@ -26,14 +26,29 @@ const Home = () => {
     <>
       {state.results[0] ? (
         <HeroImage // here we have names the props in the HeroImage.js file and we are declaring it here !
+          // here in the following 3 lines the thing we are doing is
+          // that we are using the things declared in the APIs to decalre the image title and text
           image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
           title={`${state.results[0].original_title}`}
           text={`${state.results[0].overview}`}
         />
       ) : null}
       <Grid header="Popular Movies">
+        {' '}
+        {/* here in the grid component what we are doing is that we are taking all the props declared 
+        in the grid component and passing them here to and then for the thumbnails we have made 
+        another component in which we are passing props those help them to get the thumbnails*/}
         {state.results.map(movie => (
-          <div key={movie.id}>{movie.title}</div>
+          <Thumb
+            key={movie.id}
+            clickable
+            image={
+              movie.poster_path
+                ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+                : NoImage
+            }
+            movieId={movie.id}
+          />
         ))}
       </Grid>
       <Thumb />
