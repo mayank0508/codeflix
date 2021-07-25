@@ -7,6 +7,7 @@ import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config'; // these
 //Component
 import HeroImage from './HeroImage/HeroImage';
 import Grid from './Grid/Grid';
+import Thumb from './Thumb/Thumb';
 
 //hooks
 import { useHomeFetch } from '../hooks/useHomeFetch';
@@ -35,6 +36,7 @@ const Home = () => {
           <div key={movie.id}>{movie.title}</div>
         ))}
       </Grid>
+      <Thumb />
     </>
   );
 };
