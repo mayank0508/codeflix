@@ -6,6 +6,7 @@ import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config'; // these
 
 //Component
 import HeroImage from './HeroImage/HeroImage';
+import Grid from './Grid/Grid';
 
 //hooks
 import { useHomeFetch } from '../hooks/useHomeFetch';
@@ -19,7 +20,7 @@ const Home = () => {
 
   return (
     // here <> is called a fragment it is used when we dont want to use the divs inside the components
-    // here inside the fragment we can see that there is ternay operator there that says that if the 
+    // here inside the fragment we can see that there is ternay operator there that says that if the
     // state.result's first element exists then render the props bellow else return null.
     <>
       {state.results[0] ? (
@@ -29,6 +30,11 @@ const Home = () => {
           text={`${state.results[0].overview}`}
         />
       ) : null}
+      <Grid header="Popular Movies">
+        {state.results.map(movie => (
+          <div key={movie.id}>{movie.title}</div>
+        ))}
+      </Grid>
     </>
   );
 };
