@@ -11,9 +11,12 @@ const initialState = {
 };
 
 export const useHomeFetch = () => {
+  const [searchTerm, setSearchTerm] = useState('');
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+
+console.log(searchTerm);
 
   const fetchMovies = async (page, searchTerm = '') => {
     //here the seachTerm = '' because its the default value of the searchTerm
@@ -48,5 +51,5 @@ export const useHomeFetch = () => {
     fetchMovies(1);  // here 1 means 1st page
   }, []); // here the [] is empty that means that the function will only render once
 
-  return { state, loading, error };
+  return { state, loading, error, setSearchTerm };
 };

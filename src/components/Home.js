@@ -9,6 +9,7 @@ import HeroImage from './HeroImage/HeroImage';
 import Grid from './Grid/Grid';
 import Thumb from './Thumb/Thumb';
 import Spinner from './Spinner/Spinner';
+import SearchBar from './SearchBar/SearchBar';
 
 //hooks
 import { useHomeFetch } from '../hooks/useHomeFetch';
@@ -17,7 +18,7 @@ import { useHomeFetch } from '../hooks/useHomeFetch';
 import NoImage from '../images/no_image.jpg';
 
 const Home = () => {
-  const { state, loading, error } = useHomeFetch();
+  const { state, loading, error, setSearchTerm} = useHomeFetch();
   console.log(state);
 
   return (
@@ -25,6 +26,10 @@ const Home = () => {
     // here inside the fragment we can see that there is ternay operator there that says that if the
     // state.result's first element exists then render the props bellow else return null.
     <>
+      <SearchBar 
+      setSearchTerm={setSearchTerm}
+      />
+
       {state.results[0] ? (
         <HeroImage // here we have names the props in the HeroImage.js file and we are declaring it here !
           // here in the following 3 lines the thing we are doing is
@@ -34,6 +39,7 @@ const Home = () => {
           text={`${state.results[0].overview}`}
         />
       ) : null}
+
       <Grid header="Popular Movies">
         {' '}
         {/* here in the grid component what we are doing is that we are taking all the props declared 
