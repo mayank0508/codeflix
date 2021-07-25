@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 //API {it was already there declare so i didnt have to worry about it 😎}
 
 //Config
@@ -8,6 +8,7 @@ import { POSTER_SIZE, BACKDROP_SIZE, IMAGE_BASE_URL } from '../config'; // these
 import HeroImage from './HeroImage/HeroImage';
 import Grid from './Grid/Grid';
 import Thumb from './Thumb/Thumb';
+import Spinner from './Spinner/Spinner';
 
 //hooks
 import { useHomeFetch } from '../hooks/useHomeFetch';
@@ -51,6 +52,7 @@ const Home = () => {
           />
         ))}
       </Grid>
+      <Spinner />
       <Thumb />
     </>
   );
