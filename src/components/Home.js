@@ -18,7 +18,7 @@ import { useHomeFetch } from '../hooks/useHomeFetch';
 import NoImage from '../images/no_image.jpg';
 
 const Home = () => {
-  const { state, loading, error, setSearchTerm} = useHomeFetch();
+  const { state, loading, error, searchTerm, setSearchTerm} = useHomeFetch();
   console.log(state);
 
   return (
@@ -30,7 +30,8 @@ const Home = () => {
       setSearchTerm={setSearchTerm}
       />
 
-      {state.results[0] ? (
+      {!searchTerm && state.results[0] ? ( // here we have used !searchTerm because we don't want to show the hero image whne we are searching a movie 
+      //and then we fetch the search term in the hooks of both the home.js and fetchmovies'
         <HeroImage // here we have names the props in the HeroImage.js file and we are declaring it here !
           // here in the following 3 lines the thing we are doing is
           // that we are using the things declared in the APIs to decalre the image title and text

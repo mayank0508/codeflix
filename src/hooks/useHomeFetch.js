@@ -16,7 +16,6 @@ export const useHomeFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-
   const fetchMovies = async (page, searchTerm = '') => {
     //here the seachTerm = '' because its the default value of the searchTerm
     // here we have defined a function called
@@ -45,10 +44,13 @@ export const useHomeFetch = () => {
     setLoading(false); // now since everything has loaded 👍
   };
 
-  //Intitial Render
+  //Intitial and Search
   useEffect(() => {
-    fetchMovies(1);  // here 1 means 1st page
-  }, []); // here the [] is empty that means that the function will only render once
+    setState(initialState); // this will wipe out the old state and make way for the new one
+    fetchMovies(1, searchTerm); // here 1 means 1st page and it wont matter cause on the mount
+    //we know that the first render is a empty '';
+  }, [searchTerm]); // here the [] is searchTerm which tells us that it will render everytime
+  // when the search term changes, and it will also render one time when it is mounted.
 
-  return { state, loading, error, setSearchTerm };
+  return { state, loading, error, searchTerm, setSearchTerm };
 };
