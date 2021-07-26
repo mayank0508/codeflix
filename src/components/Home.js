@@ -28,7 +28,6 @@ const Home = () => {
     // state.result's first element exists then render the props bellow else return null.
     <>
       <SearchBar setSearchTerm={setSearchTerm} />
-
       {!searchTerm && state.results[0] ? ( // here we have used !searchTerm because we don't want to show the hero image whne we are searching a movie
         //and then we fetch the search term in the hooks of both the home.js and fetchmovies'
         <HeroImage // here we have names the props in the HeroImage.js file and we are declaring it here !
@@ -39,7 +38,6 @@ const Home = () => {
           text={`${state.results[0].overview}`}
         />
       ) : null}
-
       <Grid header={searchTerm ? 'Search Results' : 'Popular Movies'}>
         {' '}
         {/* here in the grid component what we are doing is that we are taking all the props declared 
@@ -58,10 +56,14 @@ const Home = () => {
           />
         ))}
       </Grid>
-      {loading && <Spinner />}
-      {state.page < state.total_pages && !loading && (
-        <Button text="Load more" />
-      )}
+      {loading && <Spinner />}{' '}
+      {/*here the js component tells that if the pages are loading then only you need to show the spinner */}
+      {state.page < state.total_pages &&
+        !loading && ( // here the 1st thing we see is that current page is smalled that the total
+          // pages i.e the last last page then only run this thing and it should also not be loading
+          // the show button with a text of load more
+          <Button text="Load more" />
+        )}
     </>
   );
 };
