@@ -16,7 +16,6 @@ export const useHomeFetch = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
 
-console.log(searchTerm);
 
   const fetchMovies = async (page, searchTerm = '') => {
     //here the seachTerm = '' because its the default value of the searchTerm

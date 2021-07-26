@@ -12,11 +12,23 @@ const SearchBar = ({ setSearchTerm }) => {
   // check this tweets out for refrence https://twitter.com/MayankThakurrr/status/1419389685059653632
 
   const [state, setState] = useState('');
+  const initial = useRef(true); // this is right now set at true
+
+
+ useEffect(() => { 
+  if (initial.current) {
+    initial.current = false;
+    return;
+  }})
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      // here we have made a timmer which will helps us to trigger exactly after 500ms
       setSearchTerm(state);
     }, 500);
+
+    return () => clearTimeout(timer); // this will clear the timer in the background
   }, [setSearchTerm, state]);
 
   return (
