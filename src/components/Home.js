@@ -41,7 +41,7 @@ const Home = () => {
         />
       ) : null}
 
-      <Grid header="Popular Movies">
+      <Grid header={searchTerm ? 'Search Results' : 'Popular Movies'}>
         {' '}
         {/* here in the grid component what we are doing is that we are taking all the props declared 
         in the grid component and passing them here to and then for the thumbnails we have made 
