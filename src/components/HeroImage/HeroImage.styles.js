@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
     // image props here.
     url(${({ image }) => image}),
     var(--darkGrey);
-  background-size: 100% cover;
+  background-size: cover;
   background-position: center;
   position: relative;
   height: 600px;
