@@ -15,6 +15,7 @@ export const useHomeFetch = () => {
   const [state, setState] = useState(initialState);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [isLoadingMore, setIsLoadingMore] = useState(false); // this is the useEffect we use for the loading button
 
   const fetchMovies = async (page, searchTerm = '') => {
     //here the seachTerm = '' because its the default value of the searchTerm
@@ -52,5 +53,14 @@ export const useHomeFetch = () => {
   }, [searchTerm]); // here the [] is searchTerm which tells us that it will render everytime
   // when the search term changes, and it will also render one time when it is mounted.
 
-  return { state, loading, error, searchTerm, setSearchTerm };
+  // Load More
+  useEffect(() => {
+    if (!isLoadingMore) return; // ie when isLoadingMore is true
+
+    fetchMovies(state.page + 1, searchTerm); // this will say that it will fetch another page and then do that in if we are in the seach_term also
+    setIsLoadingMore(false); //here we are resetting it to false and thus the cycle will continue
+  }, [isLoadingMore, state.page, searchTerm]); // here the [] is loadingMore which tells us that it will render everytime, here we are adding
+  // the state.page and the searchTerm here because we already have declared it in the fetchMovie function to the
+
+  return { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore };
 };

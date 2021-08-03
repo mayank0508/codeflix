@@ -19,8 +19,11 @@ import { useHomeFetch } from '../hooks/useHomeFetch';
 import NoImage from '../images/no_image.jpg';
 
 const Home = () => {
-  const { state, loading, error, searchTerm, setSearchTerm } = useHomeFetch();
+  const { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore } =
+    useHomeFetch();
   console.log(state);
+
+  if (error) return <div>Something went wrong...</div>; // this is because it will show a error if something goes wrong...
 
   return (
     // here <> is called a fragment it is used when we dont want to use the divs inside the components
@@ -62,7 +65,8 @@ const Home = () => {
         !loading && ( // here the 1st thing we see is that current page is smalled that the total
           // pages i.e the last last page then only run this thing and it should also not be loading
           // the show button with a text of load more
-          <Button text="Load more" />
+          <Button text="Load more" callback={() => setIsLoadingMore(true)} /> // here what will happen is that when the button is clicked 
+          //the setIsLoadingMore will change from false to true, using a callback function
         )}
     </>
   );
