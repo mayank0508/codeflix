@@ -16,7 +16,6 @@ const Thumb = ({ image, movieId, clickable }) => (
       <Image src={image} alt="" />
       /* here the image is a prop passed in the Thumb function */
     )}
-    ;
   </div>
 );
 
