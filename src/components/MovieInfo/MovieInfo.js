@@ -14,7 +14,7 @@ const MovieInfo = ({ movie }) => (
       <Thumb
         image={
           movie.poster_path
-            ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_size}`
+            ? `${IMAGE_BASE_URL}${POSTER_SIZE}${movie.poster_path}`
             : NoImage
         }
         clickable={false}
