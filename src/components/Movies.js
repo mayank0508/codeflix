@@ -10,9 +10,10 @@ import Grid from '../components/Grid/Grid';
 import Spinner from '../components/Spinner/Spinner';
 import MovieInfo from './MovieInfo/MovieInfo';
 import MovieInfoBar from './MovieInfoBar/MovieInfoBar';
+import Actor from './Actor/Actor';
 
 // Images
-import NotImage from '../images/no_image.jpg';
+import NoImage from '../images/no_image.jpg';
 
 const Movies = () => {
   const { movieId } = useParams(); // here we are using the useParams hook to get the id of the movie from the url string and we are using the movieId because we name it as movieId in the App.js file
@@ -20,7 +21,7 @@ const Movies = () => {
 
   if (loading) return <Spinner />;
   if (error) return <div>Something went wrong....👾</div>;
-
+  console.log(movie)
   return (
     <>
       <BreadCrumb movieTitle={movie.original_title} />
@@ -30,6 +31,20 @@ const Movies = () => {
         budget={movie.budget}
         revenue={movie.revenue}
       />
+      <Grid header="Actors">
+        {movie.actor.map(actors => (
+          <Actor
+            key={actors.credit_id}
+            name={actors.name}
+            character={actors.characters}
+            imageUrl={
+              actors.profile_path
+                ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actors.profile_path}`
+                : NoImage
+            }
+          />
+        ))}
+      </Grid>
     </>
   );
 };
