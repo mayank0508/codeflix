@@ -9,6 +9,7 @@ import BreadCrumb from './BreadCrumb/BreadCrumb';
 import Grid from '../components/Grid/Grid';
 import Spinner from '../components/Spinner/Spinner';
 import MovieInfo from './MovieInfo/MovieInfo';
+import MovieInfoBar from './MovieInfoBar/MovieInfoBar';
 
 // Images
 import NotImage from '../images/no_image.jpg';
@@ -23,7 +24,12 @@ const Movies = () => {
   return (
     <>
       <BreadCrumb movieTitle={movie.original_title} />
-      <MovieInfo movie={movie}/>
+      <MovieInfo movie={movie} />
+      <MovieInfoBar
+        time={movie.runtime}
+        budget={movie.budget}
+        revenue={movie.revenue}
+      />
     </>
   );
 };

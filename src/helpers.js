@@ -6,10 +6,11 @@ export const calcTime = time => {
 };
 // Convert a number to money formatting
 export const convertMoney = money => {
-  const formatter = new Intl.NumberFormat('en-US', {
+  const formatter = new Intl.NumberFormat('en-IN', {
+    // changed to indian
     style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 0,
+    currency: 'RUP',
+    minimumFractionDigits: 0
   });
   return formatter.format(money);
 };
