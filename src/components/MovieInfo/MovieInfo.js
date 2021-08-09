@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 // Styles
 import { Wrapper, Content, Text } from './MovieInfo.styles';
 //Component
@@ -41,5 +43,10 @@ const MovieInfo = ({ movie }) => (
     </Content>
   </Wrapper>
 );
+
+MovieInfo.propTypes = {
+  movie: PropTypes.object, // here movies is an object
+}
+
 
 export default MovieInfo; // this will be exported to Movies.js

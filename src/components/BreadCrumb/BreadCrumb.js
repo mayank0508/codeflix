@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { Link } from 'react-router-dom'; // it will help us to link back to the home page
 // Styles
@@ -16,5 +17,9 @@ const BreadCrumb = ({ movieTitle }) => (
     </Content>
   </Wrapper>
 );
+
+BreadCrumb.propTypes = {
+  movieTitle: PropTypes.string
+};
 
 export default BreadCrumb; // we will be exporting it to the Movies.js
