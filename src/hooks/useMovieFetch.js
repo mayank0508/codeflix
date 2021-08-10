@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'; // since this is a custom hook we have to import these hooks
 import API from '../API'; // this was originally there
+import { isPersistedState } from '../helpers';
 
 export const useMovieFetch = movieId => {
   const [state, setState] = useState({});
@@ -27,14 +28,27 @@ export const useMovieFetch = movieId => {
           directors
         });
         setLoading(false);
-
       } catch (error) {
         setError(true);
       }
     };
 
-    fetchMovie(); // we need to invoke it t the data from the server
+    const sessionState = isPersistedState(movieId); // here we are checking for the presence of the session state
+
+    if (sessionState) {
+      // here if we do return true then we setState to sessionState
+      setState(sessionState);
+      setLoading(false);
+      return;
+    }
+
+    fetchMovie(); // we need to invoke it to get the data from the server
   }, [movieId]); // here we have movieId because it will be change only when the movieId will change
+
+  // Write to sessionStorage
+  useEffect(() => {
+    sessionStorage.setItem(movieId, JSON.stringify(state)); //
+  }, [movieId, state]); // we should always specify all the dependencies for the useEffect, what a dependeciy does is that it runs a function when that certain state changes
 
   return { state, loading, error };
 };

@@ -14,3 +14,8 @@ export const convertMoney = money => {
   });
   return formatter.format(money);
 };
+// for saving data in the session store
+export const isPersistedState = stateName => {
+  const sessionState = sessionStorage.getItem(stateName);
+  return sessionState && JSON.parse(sessionState);
+};
